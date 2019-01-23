@@ -1,0 +1,7 @@
+<h1>Students in {{ cohort.name }}</h1>
+
+<ul>
+  {% for student in student_list %}
+    <li>{{ student.name }}'s favortie color is {{ student.fav_color }}</li>
+    {% endfor %}
+</ul>
