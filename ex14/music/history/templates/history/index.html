@@ -5,3 +5,9 @@
   <li><a href="/history/{{ artist.id }}/"> {{ artist.artist_name }}</a></li>
   {% endfor %}
 </ul>
+<form method="post" action="{% url 'history:newArtist' %}">
+    {% csrf_token %}
+    <label for="newArtist">New Artist</label><br>
+    <input type="text" name="artist" id = "newArtist">
+    <input type = "submit" value="Artist">
+  </form>

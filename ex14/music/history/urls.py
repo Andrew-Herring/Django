@@ -2,9 +2,9 @@ from django.urls import path
 
 from . import views
 
+app_name = "history"
 urlpatterns = [
-    # ex: /history/
     path('', views.index, name='index'),
-    # ex: /history/5/
     path('<int:id>/', views.detail, name='detail'),
+    path('newArtist', views.newArtist, name='newArtist')
 ]

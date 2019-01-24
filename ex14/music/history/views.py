@@ -1,5 +1,7 @@
-from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
+from .models import Artist, Song
 
 from .models import Artist
 from .models import Song
@@ -16,3 +18,11 @@ def detail(request, id):
     artist = Artist.objects.get(pk=id)
     context = { "song_list": song_list, "artist": artist }
     return render(request, "history/detail.html", context)
+
+
+def newArtist(request):
+
+  artist = Artist(artist_name = request.POST['artist'])
+  artist.save()
+  added_artist = Artist.objects.filter(artist_name = request.POST['artist'])
+  return HttpResponseRedirect(reverse('history:detail', args=(added_artist[0].id,)))
